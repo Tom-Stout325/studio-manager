@@ -1,0 +1,60 @@
+{% extends 'index.html' %} 
+{% load static %} 
+
+{% block title %} 
+    {{ invoice.inv_num }}
+{% endblock %} 
+
+
+{% block content %}
+
+<div class="container">
+    {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+            <li> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="container">
+    <div>
+        <h3>Invoice Number: {{ invoice.inv_numb }}</h3>
+        
+        <ul>
+            <li>{{ invoice.group }}</li>
+            <li>{{ invoice.client }}</li>
+            <li>{{ invoice.date }}</li>
+            <li>{{ invoice.location }}</li>
+            <li>{{ invoice.event }}</li>
+            <li>{{ invoice.amount }}</li>
+            <li>{{ invoice.status }}</li>
+        </ul>
+        <ul>
+            <h4>Products:</h4>
+        {% for i in invoice_product %}
+            <li>Product: {{ i.product_name }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <br>
+ 
+    </div>
+</div>
+    <br/>
+    <br/>
+    <br/>
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ formset.as_p }}
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+
+
+{% endblock %}

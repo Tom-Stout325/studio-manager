@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+  Clients
+{% endblock %}
+
+{% block content %}
+  <br>
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <h5>Invoices</h5>
+    </div>
+    <div class="card card-body">
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th> 
+          <th>Email</th>
+          <th>phone</th>
+          <th>View</th>
+        </tr>
+        {% for client in clients%}
+          <tr>
+            <td>{{ client.id }}</td>
+          {% if client.business %}
+            <td>{{ client.business}}</td>
+          {% else %}
+            <td>{{ client.fname }} {{ client.lname }}</td>
+          {% endif %}
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone}}</td>
+            <td><a href="{% url 'client' client.id %}" class="btn btn-primary">View</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

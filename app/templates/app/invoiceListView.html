@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+  Invoices
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card card-body">
+            <h2 class="text-primary"></h2>
+          </div>
+          <div class="card card-body">
+            <table class="table table-hover">
+              <tr class="table-light">
+                <th class="text-primary fs-4">Date</th>
+                <th class="text-primary fs-4">Number</th> 
+                <th class="text-primary fs-4">Client</th>
+                <th class="text-primary fs-4">Amount</th> 
+                <th class="text-primary fs-4">Status</th>
+                <th class="text-primary fs-4">View</th>
+              </tr>
+              {% for invoice in invoices %}
+                <tr>
+                  <td class="text-info fs-5">{{ invoice.date }}</td>
+                  <td class="text-info fs-5">{{ invoice.inv_numb }}</td>
+                  {% if invoice.client.business %}
+                    <td class="text-info fs-5">{{ invoice.client.business}}</td>
+                  {% else %}
+                    <td class="text-info fs-5">{{ invoice.client.fname }} {{ invoice.client.lname }}</td>
+                  {% endif %}
+                  <td class="text-info fs-5">${{ invoice.amount}}</td>
+                  <td class="text-info fs-5">{{ invoice.status }}</td>
+                  <td class="text-info fs-5"><a href="{% url 'invoice' invoice.id %}" class="btn btn-primary">View</a></td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    {% else %}
+    <h2>No Invoices to display</h2>
+    {% endif %}
+    
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard</a>
+</div>
+
+{% endblock %}

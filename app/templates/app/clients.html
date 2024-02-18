@@ -1,0 +1,97 @@
+{% extends 'index.html' %} 
+{% load static %} 
+
+{% block title %} 
+    Clients
+{% endblock %} 
+
+
+{% block content %}
+
+<br>
+<div class="row w-75 mx-auto">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Clients</h5>
+            <hr>
+            <a href="" class="btn btn-outline-info btn-sm btn-block mb-3">Customer Details</a>
+            <a href="" class="btn btn-outline-success btn-sm btn-block">Create An Invoice</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="row">
+
+                <h5>Contact Information:</h5>
+                <hr>
+                <div class="col mb-3">
+                    {% if clients.business %}
+                        <p>Name: &nbsp;{{ clients.business }}</p>
+                    {% else %}
+                        <p class="mb-3">Name:{{ clients.fname }} {{clients.lname }}</p>
+                    {% endif %}
+                    <p>Client ID: &nbsp;{{ clients.id}}</p>    
+                </div>
+                <div class="col mb-3">
+                    <p>Email:&nbsp;{{ clients.email }}</p>
+                    <p>Phone:&nbsp;{{ clients.phone }}</p>  
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total Invoices</h5>
+            <hr>
+            <h1 style="text-align: center; padding: 13px;">{{ count }}</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row w-75 mx-auto">
+    <div class="col">
+        <div class="card card-body">
+            <form action="" method="get">
+
+                
+                <button class="btn btn-primary" type="submit">Search</button>
+                <a href="{% url 'clients' %}" class="btn btn-success">Go Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="row w-75 mx-auto">
+    <div class="col-sm-12">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Invoice</th>
+                    <th>Date</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Update</th> 
+                    <th>Delete</th>
+                </tr>
+                {% for i in inv %}
+                <tr>
+                    <td>{{ i.inv_numb }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.client.business}}</td>
+                    <td>{{ i.status }}</td>
+                    <td><a href="" class="btn btn-primary">Update</a></td>
+                    <td><a href="" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

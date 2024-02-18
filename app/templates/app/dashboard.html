@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+  Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+{% include 'components/status.html' %}
+<div class="row">
+  <div class="col-sm-12 col-md-5">
+    <h3>Customers:</h3>  
+    <hr>
+    <div class="card card-body">
+      <a href="" class="btn btn-primary btn-sm btn-block">Add A Customer</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Client ID</th> 
+          <th>Client</th>
+          <th>Email</th>
+          <th>Invoices</th>
+        </tr>
+          {% for client in clients %}
+            <tr>
+             
+              <td><a href="{% url 'client' client.id %}"><i class="fa-regular fa-eye"></i></a> &#160; {{ client.id }}</td>
+              {% if client.business %}
+                <td>{{ client.business }}</td>
+              {% else %}
+                <td>{{ client.fname }} {{ client.lname }}</td>
+              {% endif %}
+              <td>{{ client.email }}</td>
+              <td>{{ customers }}</td>
+            </tr>
+            {% endfor %}
+      </table>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-7">
+    <h3>Invoices:</h3>  
+    <hr>
+    <div class="card card-body">
+      <a href="" class="btn btn-primary btn-sm btn-block">Create Invoice</a>
+      <table class="table table-sm">
+        <tr>
+          <th>Invoice</th>  
+          <th>Event</th>
+          <th>Date</th>
+          <th>Status</th> 
+          <th>Update</th> 
+          <th>Delete</th>
+        </tr>
+        {% for i in invoices %}
+        <tr>
+          <td>{{ i.inv_numb }}</td>
+          <td>{{ i.event }}</td>
+          <td>{{ i.date }}</td>
+          <td>{{ i.status }}</td>
+          <td><a href="{% url 'updateInvoice' i.id %}" class="btn btn-primary">Update</a></td>
+          <td><a href="{% url 'deleteInvoice' i.id %}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'index.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+
+
+{% block title %} 
+    Order Form
+{% endblock %} 
+
+
+{% block content %}
+
+
+<div class="container">
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" data-bs-toggle="tab" href="#invoice" aria-selected="true" role="tab">Create an Invoice</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" data-bs-toggle="tab" href="#invoice2" aria-selected="false" tabindex="-1" role="tab">Enter an Order</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" data-bs-toggle="tab" href="#client" aria-selected="false" tabindex="-1" role="tab">Add A Client</a>
+    </li>
+  </ul>
+
+  <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade show active" id="invoice" role="tabpanel">
+        <div class="col-sm-12">
+            <div class="card border-primary mb-3" style="max-width: 100%;">
+                <div class="card-header"><h3>Create an Invoice</h3> </div>
+                <div class="card-body">
+               
+                  <form action="" method = "POST">
+                      {% csrf_token %}
+                      {{ inv_form|crispy }}
+                      <button class="btn btn-secondary" type="submit">Enter</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade show active" id="invoice2" role="tabpanel">
+          <div class="col-sm-12">
+              <div class="card border-primary mb-3" style="max-width: 100%;">
+                  <div class="card-header"><h3>Create an Invoice</h3> </div>
+                  <div class="card-body">
+                 
+                    <form action="" method = "POST">
+                        {% csrf_token %}
+
+                      <div class="col-sm-3 col-md-4">
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        {{ form.name}}
+                      </div>
+
+                      <div class="col-sm-3 col-md-4">
+                        
+                      </div>
+
+
+                        <button class="btn btn-secondary" type="submit">Enter</button>
+                    </form>
+                    
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+    <div class="tab-pane fade" id="client" role="tabpanel">
+      <div class="col-sm-12">
+          <div class="card border-primary mb-3" style="max-width: 100%;">
+              <div class="card-header"><h3>Add A Client</h3></div>
+              <div class="card-body">
+    
+                <form action="" method = "POST">
+                  {% csrf_token %}
+                  {{ cust_form|crispy }}
+                  <button class="btn btn-secondary" type="submit">Enter</button>
+                </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+    
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
