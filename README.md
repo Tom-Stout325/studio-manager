@@ -1,6 +1,6 @@
 
-><h1 align="center">Django Boilerplate<h1>
-ur Family Gift Registry</h3>
+><h1 align="center">Studio Manager<h1>
+<h3>Clients & Invoices</h3>
 
 ___
 
@@ -17,28 +17,24 @@ ___
 
 
 
-> This is a Django boilerplates
+> This is a Django Projuct for Photographers
 
 Includes:
 1. Custom Settings File
-2. 3 basic web bages
-3. Main Input File (index.html)
-4. NavBar
-5. Footer
-6. Page Header Section
-7. Google Font:  Montseratt
-8. PostgreSQL Ready
-9. Custome Admin
-10. Bootstrap
-11. FontAwesome
-12. Whitenoise
+2. Register/Login Functions
+3. Client Page
+4. Client CRUD operations
+5. Invoices Page
+6. Invoice CRUD operations
+7. PostgreSQL Database
+8. Custom Admin Panel
 
 ___
 
 
-### Instructions:
-1. Add favicon to images folder
-2. Add logo to images folder
-3. install requirements.txt
 
+<h1 align="center">Screenshots</h1>
 
+> ![Dashboard](static/images/screenshots/dashboard.png)
+![Clients](static/images/screenshots/client_page.png)
+![Invoices](static/images/screenshots/invoice_list.png)
